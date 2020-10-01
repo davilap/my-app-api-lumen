@@ -5,8 +5,17 @@ TODO: Give a short introduction of your project. Let this section explain the ob
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
 2.	Software dependencies
+    + composer https://getcomposer.org/download/
 3.	Latest releases
 4.	API references
+
+# Commands
+- composer update
+- php artisan migrate --seed
+- php -S localhost:8000 -t public
+
+# Swagger generate
+- php artisan swagger-lume:generate
 
 # Build and Test
 TODO: Describe and show how to build your code and run the tests. 
