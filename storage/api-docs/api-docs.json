@@ -1,0 +1,198 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My app",
+        "description": "This is a services rest api  for the project my app",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "davila@appostools.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1",
+            "description": "OpenApi host"
+        }
+    ],
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "get all  categories",
+                "description": "Get all categories",
+                "operationId": "getallcategories",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "deprecated": false,
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "product"
+                ],
+                "summary": "get all products",
+                "description": "Get all products",
+                "operationId": "getallproduct",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/stores": {
+            "get": {
+                "tags": [
+                    "store"
+                ],
+                "summary": "get all stores",
+                "description": "Get all stores",
+                "operationId": "getallstore",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/product": {
+            "post": {
+                "tags": [
+                    "product"
+                ],
+                "summary": "create product",
+                "description": "Create product",
+                "operationId": "createproduct",
+                "requestBody": {
+                    "description": "Create product",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "success register"
+                    }
+                },
+                "deprecated": false
+            },
+            "delete": {
+                "tags": [
+                    "product"
+                ],
+                "summary": "delete product",
+                "description": "delete product",
+                "operationId": "deleteproduct",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "success register"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Category": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "description"
+                        ],
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "Product": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "description"
+                        ],
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    {
+                        "required": [
+                            "category_id"
+                        ],
+                        "properties": {
+                            "category_id": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            }
+        },
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
