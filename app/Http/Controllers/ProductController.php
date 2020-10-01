@@ -133,14 +133,9 @@ class ProductController extends Controller
      */
     public function delete($id)
     {
-        $product = new Product;
-        $product->description = $request->description;
-        $product->category_id = $request->category_id;
+        $product = Product::find($id);
+        $product->delete();
 
-        $product->save();
-        
-        $response = Product::with('category')->find($product->id);
-
-        return response()->json($response);
+        return response()->json($product);
     }
 }
